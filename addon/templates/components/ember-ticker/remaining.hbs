@@ -1,0 +1,7 @@
+{{#if unit~}}
+  {{moment-diff from to precision=unit}}
+{{~else if calendar~}}
+  {{asCalendar}}
+{{~else~}}
+  {{moment-duration (moment-diff from to)}}
+{{~/if~}}

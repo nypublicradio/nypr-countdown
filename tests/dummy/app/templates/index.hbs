@@ -1,0 +1,24 @@
+<div style="display: flex; max-width: 400px; justify-content: space-between;">
+  <div class="left">
+    <p>
+      <label for="from">from</label>
+      {{input id="from" value=from type="date"}}
+    </p>
+
+    <p>
+      <label for="to">to</label>
+      {{input id="to" value=to type="date"}}
+    </p>
+
+    <p>
+      <label for="unit">unit</label>
+      {{input id="unit" value=unit}}
+    </p>
+  </div>
+
+  <div class="right">
+    {{#ember-ticker from=from to=to as |ticker|}}
+      {{ticker.remaining unit=unit}}
+    {{/ember-ticker}}
+  </div>
+</div>
