@@ -1,1 +1,1 @@
-export { default } from 'ember-ticker/components/count-down';
+export { default } from 'nypr-countdown/components/count-down';

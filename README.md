@@ -1,4 +1,4 @@
-ember-ticker
+nypr-countdown
 ==============================================================================
 
 [Short description of the addon.]
@@ -7,7 +7,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install ember-ticker
+ember install nypr-countdown
 ```
 
 
@@ -23,7 +23,7 @@ Contributing
 ### Installation
 
 * `git clone <repository-url>`
-* `cd ember-ticker`
+* `cd nypr-countdown`
 * `npm install`
 
 ### Linting

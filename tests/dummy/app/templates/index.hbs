@@ -1,24 +1,43 @@
-<div style="display: flex; max-width: 400px; justify-content: space-between;">
+<div style="display: flex; max-width: 600px; justify-content: space-between;">
   <div class="left">
-    <p>
+    <div>
       <label for="from">from</label>
       {{input id="from" value=from type="date"}}
-    </p>
+    </div>
 
-    <p>
+    <div>
       <label for="to">to</label>
       {{input id="to" value=to type="date"}}
-    </p>
+    </div>
 
-    <p>
-      <label for="unit">unit</label>
-      {{input id="unit" value=unit}}
-    </p>
+    <fieldset>
+      <legend>pick a unit</legend>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'months' on='change'}} checked=true />
+        months
+      </label>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'days' on='change'}} />
+        days
+      </label>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'hours' on='change'}} />
+        hours
+      </label>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'minutes' on='change'}} />
+        minutes
+      </label>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'seconds' on='change'}} />
+        seconds
+      </label>
+    </fieldset>
   </div>
 
   <div class="right">
-    {{#ember-ticker from=from to=to as |ticker|}}
-      {{ticker.remaining unit=unit}}
-    {{/ember-ticker}}
+    {{#count-down from=(if useNow (now) from) to=to as |counter|}}
+      {{counter.remaining unit=unit}} {{unit}}
+    {{/count-down}}
   </div>
 </div>

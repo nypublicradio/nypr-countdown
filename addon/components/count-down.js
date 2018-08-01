@@ -3,5 +3,5 @@ import layout from '../templates/components/count-down';
 
 export default Component.extend({
   layout,
-  classNames: ['ember-ticker'],
+  classNames: ['count-down'],
 });
