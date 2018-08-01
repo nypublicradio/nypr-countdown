@@ -1,5 +1,0 @@
-{{#if (has-block)}}
-  {{yield (hash remaining=(component 'ember-ticker/remaining' from=(or from now) to=to))}}
-{{else}}
-  {{ember-ticker/remaining from=(or from now) to=to calendar=true}}
-{{/if}}

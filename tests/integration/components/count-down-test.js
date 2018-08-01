@@ -5,7 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 import moment from 'moment';
 
-module('Integration | Component | ember-ticker', function(hooks) {
+module('Integration | Component | count-down', function(hooks) {
   setupRenderingTest(hooks);
 
   test('inline usage', async function(assert) {
@@ -13,23 +13,23 @@ module('Integration | Component | ember-ticker', function(hooks) {
     this.set('to', ONE_YEAR_FROM_NOW);
     this.set('from', ONE_YEAR_FROM_NOW.clone().subtract(397, 'day'))
 
-    await render(hbs`{{ember-ticker from=from to=to}}`);
-    assert.dom('.ember-ticker').hasText('in 397 days');
+    await render(hbs`{{count-down from=from to=to}}`);
+    assert.dom('.count-down').hasText('in 397 days');
 
     this.set('from', ONE_YEAR_FROM_NOW.clone().subtract(1, 'year'));
-    assert.dom('.ember-ticker').hasText('in 1 year');
+    assert.dom('.count-down').hasText('in 1 year');
 
     this.set('from', ONE_YEAR_FROM_NOW.clone().subtract(364, 'days'));
-    assert.dom('.ember-ticker').hasText('in 364 days');
+    assert.dom('.count-down').hasText('in 364 days');
 
     this.set('from', ONE_YEAR_FROM_NOW.clone().subtract(1, 'day'));
-    assert.dom('.ember-ticker').hasText('tomorrow');
+    assert.dom('.count-down').hasText('tomorrow');
 
     this.set('from', ONE_YEAR_FROM_NOW.clone().subtract(3, 'hours'));
-    assert.dom('.ember-ticker').hasText('today at 6:00 AM');
+    assert.dom('.count-down').hasText('today at 6:00 AM');
 
     this.set('from', null); // default to now()
-    assert.dom('.ember-ticker').hasText('in 1 year', 'defaults to now');
+    assert.dom('.count-down').hasText('in 1 year', 'defaults to now');
 
   });
 
@@ -42,28 +42,28 @@ module('Integration | Component | ember-ticker', function(hooks) {
     this.set('from', START)
 
     await render(hbs`
-      {{#ember-ticker from=from to=to as |ticker|}}
-        {{ticker.remaining}}
-      {{/ember-ticker}}
+      {{#count-down from=from to=to as |counter|}}
+        {{counter.remaining}}
+      {{/count-down}}
     `);
 
-    assert.dom('.ember-ticker').hasText('a year'); // humanized
+    assert.dom('.count-down').hasText('a year'); // humanized
 
     await render(hbs`
-      {{#ember-ticker from=from to=to as |ticker|}}
-        {{ticker.remaining unit='days'}}
-      {{/ember-ticker}}
+      {{#count-down from=from to=to as |counter|}}
+        {{counter.remaining unit='days'}}
+      {{/count-down}}
     `);
 
-    assert.dom('.ember-ticker').hasText('397');
+    assert.dom('.count-down').hasText('397');
 
     await render(hbs`
-      {{#ember-ticker from=from to=to thresholds=threshold as |ticker|}}
-        {{ticker.remaining unit='hours'}}:{{ticker.remaining unit='seconds'}}
-      {{/ember-ticker}}
+      {{#count-down from=from to=to as |counter|}}
+        {{counter.remaining unit='hours'}}:{{counter.remaining unit='seconds'}}
+      {{/count-down}}
     `);
 
-    assert.dom('.ember-ticker').hasText(`${DURATION.as('hours')}:${DURATION.as('seconds')}`);
+    assert.dom('.count-down').hasText(`${DURATION.as('hours')}:${DURATION.as('seconds')}`);
 
   });
 });

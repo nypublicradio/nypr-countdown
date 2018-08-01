@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/ember-ticker';
+import layout from '../templates/components/count-down';
 
 export default Component.extend({
   layout,

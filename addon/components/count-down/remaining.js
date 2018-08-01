@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../../templates/components/ember-ticker/remaining';
+import layout from '../../templates/components/count-down/remaining';
 import { computed } from '@ember/object';
 
 import moment from 'moment';
