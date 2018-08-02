@@ -1,0 +1,55 @@
+<div class="controls">
+  <div class="left">
+    <div class="input-wrapper">
+      <label for="from">starting date (defaults to now)</label>
+      {{input id="from" value=from type="date" class="input"}}
+    </div>
+
+    <div class="input-wrapper">
+      <label for="to">countdown until...</label>
+      {{input id="to" value=to type="date" class="input"}}
+    </div>
+
+    <fieldset class="fieldset">
+      <legend>pick a unit</legend>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'months' on='change'}} checked=true />
+        months
+      </label>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'days' on='change'}} />
+        days
+      </label>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'hours' on='change'}} />
+        hours
+      </label>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'minutes' on='change'}} />
+        minutes
+      </label>
+      <label>
+        <input name='unit' type='radio' {{action (mut unit) 'seconds' on='change'}} />
+        seconds
+      </label>
+    </fieldset>
+
+  </div>
+
+  <div class="right">
+    {{!-- BEGIN-SNIPPET count-down --}}
+    The election {{count-down unit=unit from=(or from (now)) to=to}}
+    {{!-- END-SNIPPET --}}
+    {{code-snippet name="count-down.hbs"}}
+  </div>
+</div>
+
+<div class="instructions">
+{{markdown-to-html "
+  `nypr-countdown` exposes a simple `count-down` component which provides some nice defaults for counting down to a specified date.
+
+  Try using the controls above to adjust the `to` and `from` parameters, which are passed to the component above, as show in the code snippet.
+
+  The `count-down` component will render a `<span/>` tag with a `.count-down` class so it may be targeted with CSS.
+"}}
+</div>
