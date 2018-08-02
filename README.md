@@ -1,7 +1,7 @@
 nypr-countdown
 ==============================================================================
 
-[Short description of the addon.]
+Provides a `{{count-down}}` component that renders the amount of time remaining until the specificied date.
 
 Installation
 ------------------------------------------------------------------------------
@@ -14,7 +14,7 @@ ember install nypr-countdown
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+See https://nypublicradio.github.io/nypr-countdown for more.
 
 
 Contributing
