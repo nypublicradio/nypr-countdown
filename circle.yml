@@ -21,6 +21,27 @@ save_node: &save_node
     paths:
       - node_modules
 
+bower_key: &bower_key
+  key: node-deps-{{ arch }}-{{ checksum "bower.json" }}
+
+restore_bower: &restore_bower
+  restore_cache:
+    <<: *bower_key
+
+install_bower: &install_bower
+  run:
+    name: bower deps
+    command: |
+      if [ ! -d bower_components ]; then
+        npx bower i
+      fi
+
+save_bower: &save_bower
+  save_cache:
+    <<: *bower_key
+    paths:
+      - bower_components
+
 container_defaults: &defaults
   docker:
     - image: circleci/node:8.7-browsers
@@ -37,13 +58,17 @@ jobs:
       - <<: *install_node
       - <<: *save_node
 
+      - <<: *restore_bower
+      - <<: *install_bower
+      - <<: *save_bower
+
   test:
     <<: *defaults
 
     steps:
       - checkout
       - <<: *restore_node
-
+      - <<: *restore_bower
       - run: npx ember test
 
   deploy:
@@ -51,6 +76,7 @@ jobs:
     steps:
       - checkout
       - <<: *restore_node
+      - <<: *restore_bower
       - deploy:
          name: Deploy to GitHub Pages
          command: npx ember deploy production
