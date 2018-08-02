@@ -49,6 +49,8 @@ jobs:
   deploy:
     <<: *defaults
     steps:
+      - checkout
+      - <<: *restore_node
       - deploy:
          name: Deploy to GitHub Pages
          command: npx ember deploy production
