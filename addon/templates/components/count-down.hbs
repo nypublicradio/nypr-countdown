@@ -1,5 +1,1 @@
-{{#if (has-block)}}
-  {{yield (hash remaining=(component 'count-down/remaining' from=(or from (now)) to=to))}}
-{{else}}
-  {{count-down/remaining from=(or from (now)) to=to calendar=true}}
-{{/if}}
+{{humanizedTime}}
