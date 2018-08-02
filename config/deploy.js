@@ -7,7 +7,7 @@ module.exports = function(deployTarget) {
     'git-ci': {
       userName: 'deploy',
       userEmail: 'deploy@circleci',
-      deployKeyPath: '~/.ssh/id_rsa_670b66cf5a07a49c248f71f8342fa50f',
+      deployKeyPath: '/home/circleci/.ssh/id_rsa_670b66cf5a07a49c248f71f8342fa50f',
     },
     git: {
       commitMessage: '[skip ci] Deployed %@'
