@@ -1,7 +1,7 @@
 version: 2
 
 node_key: &node_key
-  key: node-deps-{{ arch }}-{{ checksum "yarn.lock" }}
+  key: node-deps-{{ arch }}-{{ checksum "package-lock.json" }}
 
 restore_node: &restore_node
   restore_cache:
