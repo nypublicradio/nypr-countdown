@@ -74,6 +74,9 @@ jobs:
   deploy:
     <<: *defaults
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "67:0b:66:cf:5a:07:a4:9c:24:8f:71:f8:34:2f:a5:0f"
       - checkout
       - <<: *restore_node
       - <<: *restore_bower
