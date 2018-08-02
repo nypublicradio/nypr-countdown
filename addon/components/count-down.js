@@ -29,7 +29,7 @@ export default Component.extend({
       lastWeek: () => `[was ${to.format('dddd')}]`,
       sameElse(from) {
         let value = moment.duration(to.diff(from)).as(unit);
-        value = Math.round(value);
+        value = Math.abs(Math.round(value));
         if (value === 1) {
           unit = singularize(unit);
         } else {
