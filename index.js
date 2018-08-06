@@ -1,5 +1,12 @@
 'use strict';
 
 module.exports = {
-  name: 'nypr-countdown'
+  name: 'nypr-countdown',
+  config() {
+    return {
+      moment: {
+        includeTimezone: 'subset'
+      }
+    };
+  }
 };
