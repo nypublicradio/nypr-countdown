@@ -15,6 +15,12 @@ body {
   background-color: #efefef;
 }
 
+.intro {
+  max-width: 1200px;
+  margin: 0 auto 25px;
+  text-align: center;
+}
+
 .controls {
   display: flex;
   max-width: 1200px;
