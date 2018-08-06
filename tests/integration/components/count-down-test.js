@@ -35,4 +35,28 @@ module('Integration | Component | count-down', function(hooks) {
     assert.dom('.count-down').hasText('is in 1 year', 'defaults to now');
 
   });
+
+  test('block usage', async function(assert) {
+    const ONE_YEAR_FROM_NOW = moment().add(1, 'year').set({hour: 6, minute: 0, second: 0}); // 6 am on whatever day it is 1 year from now
+    this.set('to', ONE_YEAR_FROM_NOW);
+
+    await render(hbs`
+      {{#count-down to=to unit='days' as |count|}}
+        {{count}}
+      {{/count-down}}
+    `);
+
+    assert.dom('.count-down').hasText('365', 'renders raw value');
+
+    await render(hbs`
+      {{#count-down to=to unit='days' as |count|}}
+        {{#if (lte count 365)}}
+          less than a year
+        {{else}}
+          {{count}}
+        {{/if}}
+      {{/count-down}}
+    `);
+    assert.dom('.count-down').hasText('less than a year', 'can evaluate yielded count in template');
+  });
 });
