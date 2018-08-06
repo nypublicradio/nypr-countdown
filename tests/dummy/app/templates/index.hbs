@@ -41,10 +41,35 @@
   </div>
 
   <div class="right">
-    {{!-- BEGIN-SNIPPET count-down --}}
-    The election {{count-down unit=unit from=(or from (now)) to=to}}
-    {{!-- END-SNIPPET --}}
+    <p>
+      Inline usage includes a tense prefix:
+    </p>
+
     {{code-snippet name="count-down.hbs"}}
+
+    <p>
+      {{!-- BEGIN-SNIPPET count-down --}}
+      The election {{count-down unit=unit from=(or from (now)) to=(or to (now))}}
+      {{!-- END-SNIPPET --}}
+    </p>
+
+    <p>
+      The component will yield the raw count to its block:
+    </p>
+    {{code-snippet name="count-down-block.hbs"}}
+    <p>
+      {{!-- BEGIN-SNIPPET count-down-block --}}
+      {{#count-down unit=unit from=(or from (now)) to=to as |count|}}
+        {{count}}
+        {{#if (eq count 1)}}
+          {{unit}}
+        {{else}}
+          {{unit}}s
+        {{/if}}
+      {{/count-down}}
+      {{!-- END-SNIPPET --}}
+    </p>
+
   </div>
 </div>
 
