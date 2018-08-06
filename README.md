@@ -1,7 +1,8 @@
 nypr-countdown
 ==============================================================================
+[![CircleCI](https://circleci.com/gh/nypublicradio/nypr-countdown.svg?style=svg)](https://circleci.com/gh/nypublicradio/nypr-countdown)
 
-Provides a `{{count-down}}` component that renders the amount of time remaining until the specificied date.
+Provides a `{{count-down}}` component that renders the amount of time remaining until the specified date.
 
 Installation
 ------------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Contributing
 
 ### Installation
 
-* `git clone <repository-url>`
+* `git clone git@github.com:nypublicradio/nypr-countdown`
 * `cd nypr-countdown`
 * `npm install`
 
