@@ -13,6 +13,18 @@ export default Component.extend({
 
   from: moment(),
 
+  diff: computed('from', 'to', 'unit', function() {
+    if (!this.to) {
+      return;
+    }
+    let { from, to, unit } = this;
+    from = moment(from);
+    to = moment(to);
+    let value = moment.duration(to.diff(from)).as(unit);
+
+    return Math.round(value);
+  }),
+
   humanizedTime: computed('from', 'to', 'unit', function() {
     if (!this.to) {
       return;

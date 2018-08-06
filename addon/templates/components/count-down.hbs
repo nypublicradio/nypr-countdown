@@ -1,1 +1,5 @@
-{{humanizedTime}}
+{{#if (has-block)}}
+  {{yield diff}}
+{{else}}
+  {{humanizedTime}}
+{{/if}}
