@@ -11,15 +11,16 @@ export default Component.extend({
   tagName: 'span',
   layout,
 
+  timezone: 'America/New_York',
   from: moment(),
 
   diff: computed('from', 'to', 'unit', function() {
     if (!this.to) {
       return;
     }
-    let { from, to, unit } = this;
-    from = moment(from);
-    to = moment(to);
+    let { from, to, unit, timezone } = this;
+    from = moment.tz(from, timezone);
+    to = moment.tz(to, timezone);
     let value = moment.duration(to.diff(from)).as(unit);
 
     return Math.round(value);
@@ -29,9 +30,9 @@ export default Component.extend({
     if (!this.to) {
       return;
     }
-    let { from, to, unit } = this;
-    from = moment(from);
-    to = moment(to);
+    let { from, to, unit, timezone } = this;
+    from = moment.tz(from, timezone);
+    to = moment.tz(to, timezone);
 
     return to.calendar(from, {
       sameDay: () => `[is today at ${to.format('LT')}]`,
