@@ -41,15 +41,17 @@
   </div>
 
   <div class="right">
-    <p>
-      Inline usage includes a tense prefix:
-    </p>
+{{md-text text="
+Inline usage includes a tense prefix.
+
+Note the use of the `now` helper (provided by `ember-moment`) to set a default value for the `to` param.
+"}}
 
     {{code-snippet name="count-down.hbs"}}
 
     <p>
       {{!-- BEGIN-SNIPPET count-down --}}
-      The election {{count-down unit=unit from=(or from (now)) to=(or to (now))}}
+      The election {{count-down unit=unit from=from to=(or to (now))}}
       {{!-- END-SNIPPET --}}
     </p>
 
@@ -59,7 +61,7 @@
     {{code-snippet name="count-down-block.hbs"}}
     <p>
       {{!-- BEGIN-SNIPPET count-down-block --}}
-      {{#count-down unit=unit from=(or from (now)) to=to as |count|}}
+      {{#count-down unit=unit from=from to=(or to (now)) as |count|}}
         {{count}}
         {{#if (eq count 1)}}
           {{unit}}
@@ -85,8 +87,8 @@
 
   name | type | description
   --- | --- | ---
-  `from` | `String`, `Date` | The starting point from which to calculate the duration. Defaults to now.
-  `to` | `String`, `Date` | The target date to calculate against.
+  `from` | `String`, `Date`, `moment` | The starting point from which to calculate the duration. Defaults to now.
+  `to` | `String`, `Date`, `moment` | The target date to calculate against.
   `unit` | `String` | One of: `months`, `days`, `hours`, `minutes`, `seconds`.
 
   If the `from` and `to` values are Strings, they must follow the ISO 8601 format. Any of the following work:
