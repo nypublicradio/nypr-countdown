@@ -39,7 +39,7 @@ module('Integration | Component | count-down', function(hooks) {
   });
 
   test('block usage', async function(assert) {
-    const ONE_YEAR_FROM_NOW = moment().tz(TIMEZONE).add(1, 'year').set({hour: 6, minute: 0, second: 0}); // 6 am on whatever day it is 1 year from now
+    const ONE_YEAR_FROM_NOW = moment().tz(TIMEZONE).add(1, 'year'); // 6 am on whatever day it is 1 year from now
     this.set('to', ONE_YEAR_FROM_NOW);
 
     await render(hbs`
