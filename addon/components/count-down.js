@@ -24,7 +24,7 @@ export default Component.extend({
     }
     
     let value = moment.duration(to.diff(from)).as(unit);
-    return Math.round(value);
+    return Math.ceil(value);
   }),
 
   humanizedTime: computed('from', 'to', 'unit', function() {
