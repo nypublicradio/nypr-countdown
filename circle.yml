@@ -44,7 +44,7 @@ save_bower: &save_bower
 
 container_defaults: &defaults
   docker:
-    - image: circleci/node:8.7-browsers
+    - image: circleci/node:8-browsers
       environment:
         JOBS: 2
 
